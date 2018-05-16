@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+<script>
+     $(document).ready(function(){
+            $("button").click(function(){
+                $("textarea").focus();
+            });
+            $("textarea").focus(function(){
+                $("h2").html("vui lòng điền tên vào");
+            });
+        });
+function validateForm() {
+    var x = document.forms["myForm"]["Usename"].value;
+    var z = document.forms["myForm"]["Emailaddress"].value;
+    var y = document.forms["myForm"]["Password"].value;
+    if (x == "") {
+        document.getElementById("errorname").innerHTML = "Login can't be blank";
+        document.forms["myForm"]["Usename"].focus();
+        
+       
+    }else{
+        document.getElementById("errorname").innerHTML = "";
+     
+    }
+   
+    if(z =="")
+    {
+    	document.getElementById("errormail").innerHTML = "Email can't be blank";
+        document.forms["myForm"]["Emailaddress"].focus();
+       
+    }else{
+        document.getElementById("errormail").innerHTML = "";
+        
+    }
+    
+    if(y =="")
+    {
+    	document.getElementById("errorpass").innerHTML = "Password can't be blank and is too short(minimum 7 character)";
+        document.forms["myForm"]["Password"].focus();
+       
+    } else{
+        document.getElementById("errorpass").innerHTML = "";
+        return false;
+       
+    }
+
+    
+}
+</script>
+</head>
+<body>
+
+<form name="myForm" action=""  method="post">
+        <h1>Join Github</h1>
+        <p>The best way to design, build, and ship software.<br>
+        Create your personal account
+        </p>
+    Use name: <input type="text" name="Usename"> 
+    <span id="errorname" class="error"></span>
+    <br>
+<p> This will be your usename. You can add the name of your organization later.</p>
+       <label>Email address</label>
+       <br> 
+       <input type="text" size="35" name="Emailaddress" id="Emailaddress" value ="">
+       <span id="errormail" class="error"></span>
+       <br>
+       <p>We'll occasionally send updates about your account to this inbox. We'll never share your email address with anyone.</p><br>
+       <label> Password</label>
+       <br> 
+       <input type="password" size="35" name="Password" id="Password" value="">
+       <span id="errorpass" class="error"></span>
+       <br>
+        <p>Use at least one lowercase letter, one numeral, and seven characters.</p>
+        <p>
+                By click "Create an account" below, you agree to our ... 
+            </p>
+    <input type="submit" value="Create an account" onclick="validateForm(); return false;">
+
+</form>
+
+</body>
+</html>
